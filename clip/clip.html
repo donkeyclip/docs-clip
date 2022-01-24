@@ -1,0 +1,43 @@
+<div class="root">
+  <div class="map-slide">
+      <div class="map-wrapper"></div>
+  </div>
+  <div class="message">
+    <div class="message-wrapper">
+      <div class="message-heading-wrapper">
+        <div class="message-heading">Good {{initParams.greetingMessage}}</div>
+      </div>
+      <div class="message-description-wrapper">
+        <div class="message-description">Base on your IP</div>
+      </div>
+      <div class="message-description-wrapper">
+        <div class="message-description">We found this news in your area</div>
+      </div>
+    </div>
+  </div>
+  <div class="news-root">
+    <div class="news-wrapper">
+      <div class="article" mc-for="key,item" mc-of="initParams.articles">
+          <div class="article-text-wrapper">
+            <div class="article-title"> {{item.title}}</div>
+            <div class="article-description"> {{item.description}}</div>
+            <a  href=" {{item.url}}" target="_blank" class="article-link">Read More</a>
+          </div>
+          <div class="article-image" style="background-image:url({{item.image}})" > </div>
+      </div>
+    </div>
+  </div>
+  <div class="tmin">Having more information about you will help us to provide you more content</div>
+  <div class="logo-wrapper">
+    <svg xmlns="http://www.w3.org/2000/svg" class="mc-logo" width="33" height="31" viewBox="0 0 33 31">
+      <path style="fill: white;" class="mc-logo-path" d="M5.83,23.3V7.7l7.11,8.1L5.83,23.3ZM32.5.5h-5L16.27,12.16,5.85.5H.5v30h5L19.7,15.6h0l7.78-8.12v16l-4.65-4.83a.25.25,0,0,0-.36,0h0L19.31,22l8.16,8.54h5Z" stroke-miterlimit="10" fill-rule="evenodd"/>
+    </svg>
+    <div class="text-wraper">
+      <div class="name-wraper"><div class="name">MotorCortex</div></div>
+      <div class="description-wraper"><div class="description">dynamic video technology for the Web</div></div>
+    </div>
+  </div>
+</div>
+
+
+
