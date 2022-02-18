@@ -1,11 +1,11 @@
-import { HTMLClip,loadPlugin,CSSEffect } from "@donkeyclip/motorcortex";
+import { HTMLClip,loadPlugin,CSSEffect,AudioPlayback } from "@donkeyclip/motorcortex";
 import SVGDDef from "@donkeyclip/motorcortex-svgdraw";
 import MapsDef from "@donkeyclip/motorcortex-ol";
 
 
 import html from "./clip.html";
 import css from "!!raw-loader!./clip.css";
-import { comboTop, fadeOut,width,top, left, transform, fadeIn, widthHeight,height, filterInvert, fillStroke, color } from "./incidents";
+import { fadeOut,width,top, left, transform, fadeIn, widthHeight,height, filterInvert, fillStroke, color } from "./incidents";
 import { initParamsValidationRules, initParams } from "./initParams";
 
 const SVGD = loadPlugin(SVGDDef);
@@ -26,7 +26,44 @@ export const clip = new HTMLClip({
     width: "1920px",
     height: "1080px",
   },
+  audioSources: [
+    {
+      src: "@initParams.articles[0].article_audio",
+      id: "article-1",
+      base64: true,
+    },
+    {
+      src: "@initParams.articles[1].article_audio",
+      id: "article-2",
+      base64: true,
+    },
+    {
+      src: "@initParams.articles[2].article_audio",
+      id: "article-3",
+      base64: true,
+    },
+  ],
 });
+
+
+const songPlayback = new AudioPlayback({
+  selector: "~#article-1",
+  startFrom: 0,
+  duration: "@expression(initParams.articles[0].article_audio_duration*1000+500)",
+});
+
+const songPlayback2 = new AudioPlayback({
+  selector: "~#article-2",
+  startFrom: 0,
+  duration: "@expression(initParams.articles[1].article_audio_duration*1000+500)",
+});
+
+const songPlayback3 = new AudioPlayback({
+  selector: "~#article-3",
+  startFrom: 0,
+  duration: "@expression(initParams.articles[2].article_audio_duration*1000+500)",
+});
+
 
 const drawTree = new SVGD.Draw(
   {
@@ -67,7 +104,7 @@ const mapClip = new Maps.Clip(
   {
     selector: ".map-wrapper",
     containerParams: { width: "800px", height: "800px" },
-    initParams: {color:"@initParams.color"},
+    // initParams: {color:"@initParams.color"},
   }
 );
 
@@ -122,7 +159,33 @@ clip.addIncident(fillStroke("#fff",".mc-logo-path",800), 9300);
 clip.addIncident(color("#fff",".name,.description",800),9300)
 clip.addIncident(height("720px",".news-wrapper",800,"easeInOutQuint"),9300)
 clip.addIncident(width("1280px",".news-wrapper",800,"easeInOutQuint"),10100)
-clip.addIncident(comboTop("0%","100%",".article-text-wrapper",'easeInOutQuint',"@stagger(0, 6000)"),10500);
-clip.addIncident(comboTop("0%","-100%",".article-image",'easeInOutQuint',"@stagger(0, 6000)"),10500);
-clip.addIncident(top("50%",".tmin", 600,"easeOutCirc"),20100);
+
+
+
+const getClassNameText = (child)=>`.news-wrapper .article:nth-child(${child}) .article-text-wrapper`;
+const getClassNameImage = (child)=>`.news-wrapper .article:nth-child(${child}) .article-image`;
+
+
+
+clip.addIncident(top("0%",getClassNameText(1), 600,"easeOutCirc"), 10500);
+clip.addIncident(top("0%",getClassNameImage(1), 600,"easeOutCirc"), 10500);
+clip.addIncident(songPlayback, 10500);
+clip.addIncident(top("100%",getClassNameText(1), 600,"easeOutCirc"), clip.duration);
+clip.addIncident(top("-100%",getClassNameImage(1), 600,"easeOutCirc"), clip.duration-600);
+
+clip.addIncident(top("0%",getClassNameText(2), 600,"easeOutCirc"), clip.duration);
+clip.addIncident(top("0%",getClassNameImage(2), 600,"easeOutCirc"), clip.duration-600);
+clip.addIncident(songPlayback2, clip.duration);
+clip.addIncident(top("100%",getClassNameText(2), 600,"easeOutCirc"), clip.duration);
+clip.addIncident(top("-100%",getClassNameImage(2), 600,"easeOutCirc"), clip.duration-600);
+
+clip.addIncident(top("0%",getClassNameText(3), 600,"easeOutCirc"), clip.duration);
+clip.addIncident(top("0%",getClassNameImage(3), 600,"easeOutCirc"), clip.duration-600);
+clip.addIncident(songPlayback3, clip.duration);
+clip.addIncident(top("100%",getClassNameText(3), 600,"easeOutCirc"), clip.duration);
+clip.addIncident(top("-100%",getClassNameImage(3), 600,"easeOutCirc"), clip.duration-600);
+
+
+// clip.addIncident(top("50%",".tmin", 600,"easeOutCirc"),clip.calculatedDuration);
 clip.addIncident(mapClip,0)
+

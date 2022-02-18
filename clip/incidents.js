@@ -172,41 +172,41 @@ export const fadeIn = (selector, duration, easing = "linear") =>
 
 
 
-  export const comboTop = (start,end,selector, easing = "linear",delay) =>
-  new Combo(
-    {
-      incidents: [
-        {
-          incidentClass: CSSEffect,
-          attrs: {
-            animatedAttrs: {
-              top: start
-            }
-          },
-          props: {
-            duration: 600,
-            easing
-          },
-          position: 0
-        },
-        {
-          incidentClass: CSSEffect,
-          attrs: {
-            animatedAttrs: {
-              top: end
-            }
-          },
-          props: {
-            duration: 600,
-            easing
-          },
-          position: 3000
-        }
-      ]
-    },
-    {
-      selector,
-      easing,
-      delay
-    }
-  );
+  // export const comboTop = (start,end,selector, easing = "linear",delay) =>
+  // new Combo(
+  //   {
+  //     incidents: [
+  //       {
+  //         incidentClass: CSSEffect,
+  //         attrs: {
+  //           animatedAttrs: {
+  //             top: start
+  //           }
+  //         },
+  //         props: {
+  //           duration: 600,
+  //           easing
+  //         },
+  //         position: 0
+  //       },
+  //       {
+  //         incidentClass: CSSEffect,
+  //         attrs: {
+  //           animatedAttrs: {
+  //             top: end
+  //           }
+  //         },
+  //         props: {
+  //           duration: 600,
+  //           easing
+  //         },
+  //         position: 3000
+  //       }
+  //     ]
+  //   },
+  //   {
+  //     selector,
+  //     easing,
+  //     delay
+  //   }
+  // );
