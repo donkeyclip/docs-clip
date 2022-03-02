@@ -91,10 +91,11 @@ const fillLogo = new CSSEffect(
     duration: 1,
   }
 );
-// 40.5866655,22.9605131
+
 const base = MapsDef.utils.fromLonLat([22.962279589437337,40.586910407551436]);
 const bern = MapsDef.utils.fromLonLat([7.4458, 46.95]);
 const finish = MapsDef.utils.fromLonLat([ 37.617901652844886,55.7584553026527,]);
+
 const mapClip = new Maps.Clip(
   {
     parameters: {
@@ -104,7 +105,7 @@ const mapClip = new Maps.Clip(
   {
     selector: ".map-wrapper",
     containerParams: { width: "800px", height: "800px" },
-    // initParams: {color:"@initParams.color"},
+    initParams: {location:"@initParams.location"},
   }
 );
 
@@ -127,7 +128,7 @@ const gotoFinish = new Maps.GoTo(
     animatedAttrs: {
       goto: {
         zoom: 10,
-        center: finish
+        center: "@initParams.location"
       }
     }
   },
@@ -186,6 +187,6 @@ clip.addIncident(top("100%",getClassNameText(3), 600,"easeOutCirc"), clip.durati
 clip.addIncident(top("-100%",getClassNameImage(3), 600,"easeOutCirc"), clip.duration-600);
 
 
-// clip.addIncident(top("50%",".tmin", 600,"easeOutCirc"),clip.calculatedDuration);
+clip.addIncident(top("50%",".tmin", 600,"easeOutCirc"),clip.duration);
 clip.addIncident(mapClip,0)
 

@@ -4,7 +4,7 @@ export const initParams = [
   {
     name: "default",
     value: {
-      location:"",
+      location:[4187605.656706137,7510480.441500994],
       greetingMessage:"Morning",
       articles: [
         {
