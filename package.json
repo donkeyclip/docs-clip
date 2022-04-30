@@ -16,7 +16,8 @@
     "lint:fix": "npm run lint -- --fix",
     "start": "npm run build & webpack serve --mode=development --config ./demo/webpack.config.js",
     "test": "HERE GOES YOUR TEST TASK",
-    "test:prod": "npm run lint"
+    "test:prod": "npm run lint",
+    "render": "node node_modules/@donkeyclip/video-renderer"
   },
   "keywords": [
     "motorcortex",
@@ -32,6 +33,7 @@
     "@donkeyclip/motorcortex": "8.0.4",
     "@donkeyclip/motorcortex-ol": "^3.0.1",
     "@donkeyclip/motorcortex-svgdraw": "^1.0.0",
+    "@donkeyclip/video-renderer": "^1.4.2",
     "html-loader": "3.1.0",
     "raw-loader": "4.0.2"
   },
