@@ -22,6 +22,7 @@ import {
   color,
 } from "./incidents";
 import { initParams } from "./initParams";
+import initParamsValidationRules from "./initParamsValidationRules";
 
 const SVGD = loadPlugin(SVGDDef);
 const Maps = loadPlugin(MapsDef);
@@ -30,6 +31,7 @@ export const clip = new HTMLClip({
   html,
   css,
   host: document.getElementById("clip"),
+  initParamsValidationRules,
   initParams: initParams[0].value,
   fonts: [
     {
