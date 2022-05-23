@@ -1,5 +1,5 @@
 export default {
-    locarion: {
+    location: {
       label: "Location",
       type: "array",
       optional: false,

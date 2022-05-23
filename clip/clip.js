@@ -110,8 +110,6 @@ const fillLogo = new CSSEffect(
   }
 );
 
-const base = MapsDef.utils.fromLonLat([22.962279589437337, 40.586910407551436]);
-const bern = MapsDef.utils.fromLonLat([7.4458, 46.95]);
 
 const mapClip = new Maps.Clip(
   {
@@ -131,7 +129,7 @@ const gotoBern = new Maps.GoTo(
     animatedAttrs: {
       goto: {
         zoom: 4,
-        center: bern,
+        center: "@initParams.location",
       },
     },
   },
