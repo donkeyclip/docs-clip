@@ -26,6 +26,7 @@ import initParamsValidationRules from "./initParamsValidationRules";
 
 const SVGD = loadPlugin(SVGDDef);
 const Maps = loadPlugin(MapsDef);
+const base = MapsDef.utils.fromLonLat([22.962279589437337, 40.586910407551436]);
 
 export const clip = new HTMLClip({
   html,
