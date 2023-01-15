@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "@babel/plugin-proposal-class-properties": "^7.16.7",
-    "@donkeyclip/motorcortex": "8.0.4",
+    "@donkeyclip/motorcortex": "^9.5.4",
     "@donkeyclip/motorcortex-ol": "^3.0.1",
     "@donkeyclip/motorcortex-svgdraw": "^1.0.0",
     "@donkeyclip/video-renderer": "^1.4.2",
