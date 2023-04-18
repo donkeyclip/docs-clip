@@ -3,9 +3,12 @@ import {
   loadPlugin,
   CSSEffect,
   AudioPlayback,
+  setCSSCore,
 } from "@donkeyclip/motorcortex";
 import SVGDDef from "@donkeyclip/motorcortex-svgdraw";
 import MapsDef from "@donkeyclip/motorcortex-ol";
+import AnimePluginDefinition from "@donkeyclip/motorcortex-anime";
+setCSSCore(AnimePluginDefinition.CSSEffect);
 
 import html from "./clip.html";
 import css from "!!raw-loader!./clip.css";
@@ -110,7 +113,6 @@ const fillLogo = new CSSEffect(
     duration: 1,
   }
 );
-
 
 const mapClip = new Maps.Clip(
   {
